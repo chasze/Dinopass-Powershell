@@ -4,6 +4,7 @@
 New-Variable -Name "password" -Value (Invoke-WebRequest 'https://www.dinopass.com/password/strong').Content
 
 #prompts for username
+write-Output "Welcome to the DinoPass password generator script!"
 $user = Read-Host "Please enter username or email"
  
 
@@ -56,3 +57,8 @@ write-Output ("Username: $user
 Password: $password")
 
 #why did I spend so much time making this?
+write-Output ("File created Sucessfully")
+$openFolder = Read-Host "Do you wish to open the text file? Y-Yes any other key -exit" 
+
+if ($openFolder -match "Y" -or $response -match "y"){ Invoke-Item ~\Desktop\Dinopass\$user.txt}
+else { break } 
